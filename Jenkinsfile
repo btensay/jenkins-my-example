@@ -2,6 +2,8 @@ pipeline
 {
     agent any
 
+    stages
+    {
     stage ('Compile Stage')
     {
         steps
@@ -17,22 +19,22 @@ pipeline
     {
         steps
         {
-            withMaven(maven : 'Maven_home')
-            {
-                sh 'mvn test'
-            }
-        }
-    }
+               withMaven(maven : 'Maven_home')
+               {
+                   sh 'mvn test'
+               }
+           }
+       }
 
-    stage ('Deployment Stage')
-    {
-        steps
-        {
-            withMaven(maven : 'Maven_home')
-            {
-                sh 'mvn deploy'
-            }
-        }
-    }
-
+       stage ('Deployment Stage')
+       {
+           steps
+           {
+               withMaven(maven : 'Maven_home')
+               {
+                   sh 'mvn deploy'
+               }
+           }
+       }
+   }
 }
